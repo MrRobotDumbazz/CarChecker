@@ -1,0 +1,25 @@
+<div class="flex flex-col items-center justify-center h-screen p-6 text-center">
+  <h1 class="text-2xl font-bold mb-6">Scan completed</h1>
+
+  <div *ngIf="isClean; else notClean">
+    <div class="flex flex-col items-center">
+      <img src="assets/car-green.svg" class="w-24 h-24">
+      <p class="mt-4">Your car is Ready To GO!</p>
+      <button (click)="goFinal()" class="mt-6 px-6 py-3 bg-green-500 text-white rounded-xl">GO!</button>
+    </div>
+  </div>
+
+  <ng-template #notClean>
+    <div class="flex flex-col items-center">
+      <img src="assets/car-red.svg" class="w-24 h-24">
+      <p class="mt-4">Your car... Need some improvements</p>
+      <button routerLink="/" class="mt-6 px-6 py-3 bg-red-500 text-white rounded-xl">Go back</button>
+    </div>
+  </ng-template>
+  <div style="border-radius: 100px; background-color: transparent; border-width: 2px;margin-top: 30px;">
+  <p class="mt-4 text-gray-600 max-w-md" style="padding: 10px; padding-top: 0px;margin-top: 10px;color: greenyellow;font-size: smaller;">
+    The feature can help improve passenger safety and trust, 
+    as well as quality of inDrive services
+  </p>
+</div>
+</div>

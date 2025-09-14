@@ -1,0 +1,22 @@
+<div class="flex flex-col items-center justify-center h-screen p-6 text-center">
+  <h1 class="text-2xl font-bold mb-6" style="color: greenyellow;">Upload photo of your car</h1>
+
+  <!-- <label class="w-40 h-40 flex items-center justify-center border-2 border-dashed rounded-2xl cursor-pointer hover:bg-gray-50">
+    <input type="file" hidden (change)="onFileSelected($event)">
+    <img src="assets/car-upload-icon.svg" alt="upload icon" class="w-20 h-20">
+  </label> -->
+  <label
+  class="w-40 h-40 flex items-center justify-center border-2 border-dashed border-gray-400 rounded-2xl cursor-pointer bg-transparent hover:bg-white/20 transition"
+>
+  <input type="file" hidden (change)="onFileSelected($event)">
+  <!-- <img src="../../icons/greenblackcar.png" alt="upload icon" class="w-20 h-20 opacity-80"> -->
+  <svg xmlns="http://www.w3.org/2000/svg" height="75px" viewBox="0 -960 960 960" width="75px" fill="#e3e3e3"><path d="M440-320v-326L336-542l-56-58 200-200 200 200-56 58-104-104v326h-80ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/></svg>
+</label>
+
+  <div style="border-radius: 100px; background-color: transparent; border-width: 2px;margin-top: 30px;">
+  <p class="mt-4 text-gray-600 max-w-md" style="padding: 10px; padding-top: 0px;margin-top: 10px;color: greenyellow;font-size: smaller;">
+    The feature can help improve passenger safety and trust, 
+    as well as quality of inDrive services
+  </p>
+</div>
+</div>

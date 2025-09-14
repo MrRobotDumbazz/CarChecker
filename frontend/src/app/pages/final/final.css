@@ -1,0 +1,22 @@
+/* Leaflet карты */
+@import "leaflet/dist/leaflet.css";
+
+#map {
+  height: 60%;
+  width: 100%;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+#block {
+  /* background: linear-gradient(135deg, #4ade80, #22d3ee); */
+    /* background: linear-gradient(135deg, #ffd557, #be6bdd); */
+  background: linear-gradient(135deg, #5e5e5e, #000000);
+
+}
