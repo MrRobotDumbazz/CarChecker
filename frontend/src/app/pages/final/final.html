@@ -31,6 +31,13 @@
   src="../../../assets/icons/check.png" alt="Check" 
   class="w-20 h-20 mb-2" 
 />
+<div *ngIf="predictions.length > 0" class="mt-4 w-full text-center">
+  <h3 class="text-lg font-bold mb-2">Predictions:</h3>
+  <ul>
+    <li *ngFor="let p of predictions">{{ p }}</li>
+  </ul>
+</div>
+
 
     <!-- <span class="material-symbols-outlined">
 check
