@@ -2,3 +2,8 @@ fastapi
 redis
 types-redis
 uvicorn
+scikit-learn
+pandas
+pillow
+numpy
+joblib

@@ -75,6 +75,10 @@ func (s *PredictionService) CreatePrediction(imageID uuid.UUID, mlResult *models
 	)
 
 	if err != nil {
+		fmt.Printf("DEBUG: Error saving prediction: %v\n", err)
+		fmt.Printf("DEBUG: CleanlinessStatus: %v\n", prediction.CleanlinessStatus)
+		fmt.Printf("DEBUG: IntegrityStatus: %v\n", prediction.IntegrityStatus)
+		fmt.Printf("DEBUG: Status: %v\n", prediction.Status)
 		return nil, fmt.Errorf("failed to save prediction: %w", err)
 	}
 

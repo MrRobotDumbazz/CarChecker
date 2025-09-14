@@ -6,7 +6,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"path/filepath"
 	"time"
 )
 
@@ -27,13 +26,9 @@ func NewMLClient(baseURL string, timeout time.Duration, apiKey string) *MLClient
 }
 
 func (c *MLClient) PredictCarStatus(imagePath string) (*models.MLPredictionResponse, error) {
-	absolutePath, err := filepath.Abs(imagePath)
-	if err != nil {
-		return nil, fmt.Errorf("failed to get absolute path: %w", err)
-	}
-
+	fmt.Printf("DEBUG: ML Client sending imagePath: %v\n", imagePath)
 	payload := models.MLPredictionRequest{
-		ImagePath: absolutePath,
+		ImagePath: imagePath,
 	}
 
 	jsonData, err := json.Marshal(payload)

@@ -50,6 +50,9 @@ func (s *ImageService) UploadImage(file multipart.File, header *multipart.FileHe
 	filename := fmt.Sprintf("%s%s", uuid.New().String(), ext)
 	filePath := filepath.Join(s.uploadPath, filename)
 
+	// Get absolute path for ML service
+	absolutePath, _ := filepath.Abs(filePath)
+
 	dst, err := os.Create(filePath)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create file: %w", err)
@@ -66,7 +69,7 @@ func (s *ImageService) UploadImage(file multipart.File, header *multipart.FileHe
 		ID:           uuid.New(),
 		Filename:     filename,
 		OriginalName: header.Filename,
-		FilePath:     filePath,
+		FilePath:     absolutePath,
 		FileSize:     header.Size,
 		MimeType:     mimeType,
 		UploadedAt:   time.Now(),
