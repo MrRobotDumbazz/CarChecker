@@ -21,7 +21,7 @@ async def predict(file: UploadFile = File(...)):
 
     features = load_image(img).flatten()
 
-    y_pred = rf.predict(features)
+    y_pred = clf.predict(features)
     label = encoder.inverse_transform(y_pred)[0]
     
     return {"prediction": label}
