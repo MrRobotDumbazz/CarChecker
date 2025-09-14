@@ -14,14 +14,27 @@ def load_image(image):
     img = Image.open(image).convert("RGB").resize((640, 640))
     img = np.array(img).flatten()
     return img
-
-@app.post("/predict/")
-async def predict(file: UploadFile = File(...)):
-    img = Image.open(BytesIO(await file.read()))
-
-    features = load_image(img).flatten()
-
-    y_pred = clf.predict(features)
-    label = encoder.inverse_transform(y_pred)[0]
     
-    return {"prediction": label}
+class PredictRequest(BaseModel):
+    ImagePath: str
+
+@app.post("/api/predict")
+async def predict(request: PredictRequest):
+    if not os.path.isfile(request.ImagePath):
+        raise HTTPException(status_code=404, detail="Файл не найден по указанному пути")
+    
+    try:
+        img = Image.open(request.ImagePath)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail="Изображение не найдено")
+    except Exception:
+        raise HTTPException(status_code=400, detail="Не удалось загрузить изображение")
+    
+    try:
+        img_tensor = load_image(img)
+        prediction_array = clf.predict(img_tensor)
+        prediction = encoder.inverse_transform(prediction_array)[0]
+    except Exception:
+        raise HTTPException(status_code=500, detail="Ошибка при обработке изображения")
+    
+    return {"prediction": prediction}
